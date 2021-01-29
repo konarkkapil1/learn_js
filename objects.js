@@ -33,6 +33,14 @@ function Circle(radius){
     this.radius = radius;
     //without using the this keyword a variable is set as a private member with a scope in object only and can't be accessed outside
     let color = "red";
+    //getter function to get private properties so that they cannot be accessed directly
+    this.getColor = () => {
+        return color;
+    }
+    this.setColor = (newColor) => {
+        color = newColor;
+        return color;
+    }
     this.draw = () => {
         console.log(color,"color circle drawn from constructor function")
     }
@@ -42,6 +50,9 @@ Circle.call({}, 1);
 
 const newCircle = new Circle(1);
 newCircle.draw();
+console.log("color is:", newCircle.getColor());
+console.log("color set to:", newCircle.setColor("blue"));
+console.log("color is:", newCircle.getColor());
 //adding properties in the existing object
 //dot notation
 newCircle.location = {x: 1, y: 1};
